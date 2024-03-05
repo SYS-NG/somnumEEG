@@ -2,7 +2,7 @@ import logo from './assets/somnum_logo_only.png';
 import './App.css';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-const { channelNames, EEGReading, MuseClient } = require('muse-js');
+const { channelNames, MuseClient } = require('muse-js');
 
 const firebaseConfig = {
   apiKey: "AIzaSyD",
