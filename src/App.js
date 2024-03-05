@@ -1,22 +1,9 @@
 import logo from './assets/somnum_logo_only.png';
 import './App.css';
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 const { channelNames, MuseClient } = require('muse-js');
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD",
-  authDomain: "somnum-3e7e7.firebaseapp.com",
-  projectId: "somnum-3e7e7",
-  storageBucket: "somnum-3e7e7.appspot.com",
-  messagingSenderId: "1042",
-  appId: "1:1042",
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const db          = getFirestore(firebaseApp);
-
 function App() {
+
   const electrodeNames = {
     'TP9':  'Left Ear',
     'AF7':  'Left Forehead',
