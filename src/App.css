@@ -1,5 +1,8 @@
 .App {
+  display: flex;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .Page {
@@ -8,13 +11,18 @@
   align-items: center;
   justify-content: center;
   height: auto;
+  min-height: 100vh;
   background-color: #282c34;
   color: white;
+  width: 100%;
+  flex-shrink: 1;
+  overflow-x: hidden; /* Enable horizontal scrolling */
 }
 
 .connect-section {
   display: flex;
   flex-direction: column;
+  flex: 1;
   align-items: center;
   justify-content: center;
   text-align: left;
@@ -22,14 +30,33 @@
   width: 100%;
 }
 
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+  width: 100%;
+}
+
 .connect-button {
-  margin: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin: 20px 5px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 5px;
-  font-size: large;
+  font-size: 1.11rem;
+  height: 45px;
+}
+
+.record-button {
+  margin: 20px 5px;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 200px;
+  height: 45px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .electrode-section {
@@ -87,5 +114,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .Page {
+    flex-direction: column; /* Stack items on small screens */
+    text-align: center;
+  }
+
+  .buttons-container,
+  .electrode-container {
+    margin: 0; /* Remove side margins on small screens */
   }
 }
