@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const DataSchema = new mongoose.Schema({
+    sessionID: {
+        type: String,
+        required: true,
+    },
     timestamp: {
         type: Date,
         required: true,
