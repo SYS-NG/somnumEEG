@@ -121,7 +121,7 @@ function App() {
     //       headers: {
     //         'Content-Type': 'application/json',
     //         'Access-Control-Request-Headers': '*',
-    //         'api-key': 'L2pKolI0HlqjzDBPPYRYlq57QGzL8hjwKglEGdPNHTHcUoWkAIfLCOyeOvbJHG7Y',
+    //         'api-key': '',
     //       },
     //       data: data
     //   };
