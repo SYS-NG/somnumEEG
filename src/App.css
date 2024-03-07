@@ -30,6 +30,31 @@
   width: 100%;
 }
 
+.small-note {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  color: white;
+  a {
+    color: #66ccff; /* Light blue color, you can adjust this color */
+    text-decoration: none; /* Remove underlines from links if needed */
+  }
+
+  /* Apply styles to visited links */
+  a:visited {
+    color: #9966cc; /* Darker purple color for visited links, adjust as needed */
+  }
+
+  /* Apply styles to hovered links */
+  a:hover {
+    color: #ffcc00; /* Yellow color on hover, adjust as needed */
+  }
+
+  /* Apply styles to active links (when clicked) */
+  a:active {
+    color: #ff6600; /* Orange color when link is clicked, adjust as needed */
+  }
+}
+
 .buttons-container {
   display: flex;
   flex-direction: row;

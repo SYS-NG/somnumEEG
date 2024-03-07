@@ -197,10 +197,15 @@ function App() {
           <div className='Page'>
             <div className='connect-section'>
               <img src={logo} className="App-logo" alt="logo" />
+              <div className="small-note">
+                Make sure you have the server running.<br/>
+                Find in backend directory of:<br/>
+                <a href="https://github.com/SYS-NG/somnumEEG">https://github.com/SYS-NG/somnumEEG</a>
+              </div>
               <div className="buttons-container">
                 <button className="connect-button" onClick={connect}>Connect</button>
                 <button className="record-button" onClick={toggle}>
-                  {shouldWriteToDB? '🔴 Recording' : '▶️ Start Recording'}
+                  {shouldWriteToDB? '🔴 Click to upload' : '▶️ START Recording'}
                 </button>
               </div>
               <div>
