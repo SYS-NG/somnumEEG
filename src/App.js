@@ -11,8 +11,9 @@ function App() {
 
   // Usestate to control when to write data to database
   const [shouldWriteToDB, setShouldWriteToDB] = useState(false);
-  const [collectedData, setCollectedData] = useState([{}]);
+  const [collectedData, setCollectedData] = useState([]);
   const [doUploadData, setDoUploadData] = useState(false);
+  const [tempSessionID, setTempSessionID] = useState("");
 
   const electrodeNames = {
     'TP9':  'Left Ear',
@@ -30,6 +31,7 @@ function App() {
     setCollectedData(prevData => [
     ...prevData,
     {
+      sessionID:  document.getElementById('session-id').innerText,
       timestamp:  reading.timestamp,
       eegData:    reading.samples,
       deviceName: deviceName,
@@ -58,10 +60,12 @@ function App() {
 
   const bulkWriteToDatabase = async(req) => {
     // get number of bytes in req
-    console.log("byte size of req: ", JSON.stringify(req).length);
+    const jsonData = JSON.stringify(req);
+    console.log("byte size of req: ", jsonData.length);
     console.log("req length: ", req.length)
     const apiUrl = 'http://localhost:5000/bulkWrite';
     const chunkSize = 200;
+
     try {
       console.log("bulk writing to database");
       // Split insertMany into smaller chunks to avoid exceeding the 16MB limit, 500 at a time
@@ -73,10 +77,19 @@ function App() {
     } catch (error) {
       console.log("error while saving dude: ", error.message);
     }
+
+    // Download the data as a file
+    const element = document.createElement("a");
+    const file = new Blob([jsonData], {type: 'application/json'});
+    element.href = URL.createObjectURL(file);
+    // download under the name <sessionID>.json
+    element.download = document.getElementById('session-id').innerText+ ".json";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
   } 
 
   useEffect(() => {
-    if (doUploadData) {
+    if (doUploadData && collectedData.length > 0) {
       console.log("uploading data");
       bulkWriteToDatabase(collectedData);
       setDoUploadData(false);
@@ -166,6 +179,7 @@ function App() {
       client.enableAux = true;
       await client.connect();
       await client.start();
+      document.getElementById('session-id').innerText = client.deviceName + '_' + Date.now();
       document.getElementById('headset-name').innerText = client.deviceName;
       client.eegReadings.subscribe((reading) => {
           collectData(client.deviceName, reading);
@@ -208,7 +222,15 @@ function App() {
                   {shouldWriteToDB? '🔴 Click to upload' : '▶️ START Recording'}
                 </button>
               </div>
-              <div>
+              <div className="info-section">
+                <input
+                  type="text"
+                  id="session-id-input"
+                  placeholder="Session ID"
+                  onChange={(e) => setTempSessionID(e.target.value)}
+                />
+                <button onClick={() => {document.getElementById('session-id').innerText = tempSessionID}}>Set Session ID</button><br/>
+                  SessionID: <span id="session-id">unknown</span><br/>
                   Name: <span id="headset-name">unknown</span><br/>
                   Firmware: <span id="firmware-version">unknown</span><br/>
                   Hardware version: <span id="hardware-version">unknown</span><br/>
