@@ -82,14 +82,14 @@ function App() {
       setDoUploadData(false);
       setCollectedData([]);
     }
-  }, [doUploadData]);
+  }, [doUploadData]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if ((!shouldWriteToDB && collectedData.length > 0)) {
       setDoUploadData(true);
     }
     else {setCollectedData([]);}
-  }, [shouldWriteToDB]);
+  }, [shouldWriteToDB]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggle = () => {
     setShouldWriteToDB(prevState => !prevState);
@@ -107,33 +107,34 @@ function App() {
         item.textContent   = channelTitle;
     });
     
-    const writeToDatabase_api = async(deviceName, reading) => {
-      const data = {
-        timestamp:  reading.timestamp,
-        eegData:    reading.samples,
-        deviceName: deviceName,
-        eegChannel: reading.electrode,
-      }
-      var config = {
-          method: 'post',
-          url: 'https://us-west-2.aws.data.mongodb-api.com/app/data-uzqwg/endpoint/data/v1/action/findOne',
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Request-Headers': '*',
-            'api-key': 'L2pKolI0HlqjzDBPPYRYlq57QGzL8hjwKglEGdPNHTHcUoWkAIfLCOyeOvbJHG7Y',
-          },
-          data: data
-      };
-                  
-      axios(config)
-          .then(function (response) {
-            console.log(response);
-            console.log(JSON.stringify(response.data));
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
-    }
+    // Might move to use API without server in the future
+    // const writeToDatabase_api = async(deviceName, reading) => {
+    //   const data = {
+    //     timestamp:  reading.timestamp,
+    //     eegData:    reading.samples,
+    //     deviceName: deviceName,
+    //     eegChannel: reading.electrode,
+    //   }
+    //   var config = {
+    //       method: 'post',
+    //       url: 'https://us-west-2.aws.data.mongodb-api.com/app/data-uzqwg/endpoint/data/v1/action/findOne',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         'Access-Control-Request-Headers': '*',
+    //         'api-key': 'L2pKolI0HlqjzDBPPYRYlq57QGzL8hjwKglEGdPNHTHcUoWkAIfLCOyeOvbJHG7Y',
+    //       },
+    //       data: data
+    //   };
+    //               
+    //   axios(config)
+    //       .then(function (response) {
+    //         console.log(response);
+    //         console.log(JSON.stringify(response.data));
+    //       })
+    //       .catch(function (error) {
+    //           console.log(error);
+    //       });
+    // }
 
     function plot(reading) {
         const canvas = canvases[reading.electrode];
