@@ -11,27 +11,30 @@
   align-items: center;
   justify-content: center;
   height: auto;
-  min-height: 100vh;
   background-color: #282c34;
   color: white;
-  width: 100%;
+  width: 100%; 
   flex-shrink: 1;
-  overflow-x: hidden; /* Enable horizontal scrolling */
+  padding: 10px;
 }
 
 .connect-section {
   display: flex;
   flex-direction: column;
-  flex: 1;
   align-items: center;
   justify-content: center;
   text-align: left;
-  margin: 0 20px;
-  width: 100%;
+  width: auto;
 }
 .info-section {
+  display: flex;
+  flex-direction: column;
   font-size: 1.2rem;
+  padding: 10px;
+  overflow: hidden;
+  width: 100%;
 }
+
 .small-note {
   font-size: 0.8rem;
   margin-top: 10px;
@@ -92,7 +95,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 20px;
-  width: 100%;
+  width: 50%;
 }
 
 .electrode-container {
@@ -106,7 +109,11 @@
 
 .electrode-item {
   margin: 10px;
+}
 
+.electrode-item canvas {
+  height: 10%;
+  width: 10%;
 }
 
 .App-logo {
@@ -144,7 +151,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .Page {
     flex-direction: column; /* Stack items on small screens */
     text-align: center;
