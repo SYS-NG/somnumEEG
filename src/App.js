@@ -38,23 +38,23 @@ function App() {
     ])
   }
 
-  const writeToDatabase = async(deviceName, reading) => {
-    const apiUrl = 'http://localhost:5000/writetodatabase';
-    try {
-      await axios.post(apiUrl,
-        {
-          content: {
-          eegData: reading.samples,
-          deviceName: deviceName,
-          eegChannel: reading.electrode,
-          }
-        }
-      );
-      // console.log("Data: ", deviceName, reading.samples);
-    } catch (error) {
-      console.log("error while saving dude: ", error.message);
-    }
-  }
+  // const writeToDatabase = async(deviceName, reading) => {
+  //   const apiUrl = 'http://localhost:5000/writetodatabase';
+  //   try {
+  //     await axios.post(apiUrl,
+  //       {
+  //         content: {
+  //         eegData: reading.samples,
+  //         deviceName: deviceName,
+  //         eegChannel: reading.electrode,
+  //         }
+  //       }
+  //     );
+  //     // console.log("Data: ", deviceName, reading.samples);
+  //   } catch (error) {
+  //     console.log("error while saving dude: ", error.message);
+  //   }
+  // }
 
   const bulkWriteToDatabase = async(req) => {
     // get number of bytes in req
