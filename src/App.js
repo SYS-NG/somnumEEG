@@ -16,21 +16,21 @@ function App() {
   const [tempSessionID, setTempSessionID] = useState("");
   const mockBulkData = [
     {
-      sessionID:  "fixServer",
+      sessionID:  "MockData",
       timestamp:  Date.now(),
       eegData:    [0,0,0,0,0,0,0,0,0,0,0,0],
       deviceName: "jetsonNano",
       eegChannel: "1",
     },
     {
-      sessionID:  "fixServer",
+      sessionID:  "MockData",
       timestamp:  Date.now(),
       eegData:    [0,0,0,0,0,0,0,0,0,0,0,0],
       deviceName: "jetsonNano",
       eegChannel: "2",
     },
     {
-      sessionID:  "fixServer",
+      sessionID:  "MockData",
       timestamp:  Date.now(),
       eegData:    [0,0,0,0,0,0,0,0,0,0,0,0],
       deviceName: "jetsonNano",
@@ -243,14 +243,16 @@ function App() {
                 Find in backend directory of:<br/>
                 <a href="https://github.com/SYS-NG/somnumEEG">https://github.com/SYS-NG/somnumEEG</a>
               </div>
+	      <button className="mockData-button" onClick={sendMockBulkData}>Bulk Send Mock Data</button>
               <div className="buttons-container">
                 <button className="connect-button" onClick={connect}>Connect</button>
                 <button className="record-button" onClick={toggle}>
                   {shouldWriteToDB? '🔴 Click to upload' : '▶️ START Recording'}
                 </button>
               </div>
+	      <div className="buttons-container">
+	      </div>
               <div className="info-section">
-	  	<button onClick={sendMockBulkData}>Mock Post Request</button>
 	  	<div className="button-container">
                   <input
                     type="text"

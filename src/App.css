@@ -73,6 +73,12 @@
   width: 100%;
 }
 
+.mockData-button {
+  position: fixed;
+  bottom:0px;
+  left:0px;
+}
+
 .connect-button {
   margin: 20px 5px;
   padding-left: 20px;
