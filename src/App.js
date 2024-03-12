@@ -223,23 +223,25 @@ function App() {
                 </button>
               </div>
               <div className="info-section">
-                <input
-                  type="text"
-                  id="session-id-input"
-                  placeholder="Session ID"
-                  onChange={(e) => setTempSessionID(e.target.value)}
-                />
-                <button onClick={() => {document.getElementById('session-id').innerText = tempSessionID}}>Set Session ID</button><br/>
-                  SessionID: <span id="session-id">unknown</span><br/>
-                  Name: <span id="headset-name">unknown</span><br/>
-                  Firmware: <span id="firmware-version">unknown</span><br/>
-                  Hardware version: <span id="hardware-version">unknown</span><br/>
-                  Temperature: <span id="temperature">unknown</span><br/>
-                  Battery: <span id="batteryLevel">unknown</span><br/>
-                  Accelerometer:<br/>
-                  __x=<span id="accelerometer-x">?</span>,<br/>
-                  __y=<span id="accelerometer-y">?</span>,<br/>
-                  __z=<span id="accelerometer-z">?</span>
+	  	<div className="button-container">
+                  <input
+                    type="text"
+                    id="session-id-input"
+                    placeholder="Session ID"
+                    onChange={(e) => setTempSessionID(e.target.value)}
+                  />
+                  <button onClick={() => {document.getElementById('session-id').innerText = tempSessionID}}>Set Session ID</button><br/>
+	        </div>
+	  	<div>SessionID: <span id="session-id">unknown</span></div>
+                <div>Name: <span id="headset-name">unknown</span><br/></div>
+                <div>Firmware: <span id="firmware-version">unknown</span><br/></div>
+                <div>Hardware version: <span id="hardware-version">unknown</span><br/></div>
+                <div>Temperature: <span id="temperature">unknown</span><br/></div>
+                <div>Battery: <span id="batteryLevel">unknown</span><br/></div>
+                <div>Accelerometer:<br/></div>
+                <div>__x=<span id="accelerometer-x">?</span>,<br/></div>
+                <div>__y=<span id="accelerometer-y">?</span>,<br/></div>
+                <div>__z=<span id="accelerometer-z">?</span></div>
               </div>
             </div>
 

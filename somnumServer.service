@@ -1,0 +1,11 @@
+[Unit]
+Description=EEG Collection Server for Somnum
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/startSomnumServer.sh 
+
+[Install]
+WantedBy=multi-user.target
+
+
