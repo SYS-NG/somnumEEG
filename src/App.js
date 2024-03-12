@@ -14,6 +14,29 @@ function App() {
   const [collectedData, setCollectedData] = useState([]);
   const [doUploadData, setDoUploadData] = useState(false);
   const [tempSessionID, setTempSessionID] = useState("");
+  const mockBulkData = [
+    {
+      sessionID:  "fixServer",
+      timestamp:  Date.now(),
+      eegData:    [0,0,0,0,0,0,0,0,0,0,0,0],
+      deviceName: "jetsonNano",
+      eegChannel: "1",
+    },
+    {
+      sessionID:  "fixServer",
+      timestamp:  Date.now(),
+      eegData:    [0,0,0,0,0,0,0,0,0,0,0,0],
+      deviceName: "jetsonNano",
+      eegChannel: "2",
+    },
+    {
+      sessionID:  "fixServer",
+      timestamp:  Date.now(),
+      eegData:    [0,0,0,0,0,0,0,0,0,0,0,0],
+      deviceName: "jetsonNano",
+      eegChannel: "3",
+    },
+  ];
 
   const electrodeNames = {
     'TP9':  'Left Ear',
@@ -202,7 +225,11 @@ function App() {
     } catch (err) {
         console.error('Connection failed', err);
     }
-  };  
+  }; 
+
+  const sendMockBulkData = async() => {
+	bulkWriteToDatabase(mockBulkData);
+  }
 
   return (
     <Router>
@@ -223,6 +250,7 @@ function App() {
                 </button>
               </div>
               <div className="info-section">
+	  	<button onClick={sendMockBulkData}>Mock Post Request</button>
 	  	<div className="button-container">
                   <input
                     type="text"
