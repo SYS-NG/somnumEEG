@@ -64,7 +64,7 @@ function App() {
     console.log("byte size of req: ", jsonData.length);
     console.log("req length: ", req.length)
     const apiUrl = 'http://localhost:5000/bulkWrite';
-    const chunkSize = 400;
+    const chunkSize = 200;
 
     try {
       console.log("bulk writing to database");
